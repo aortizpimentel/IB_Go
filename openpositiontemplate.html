@@ -1,0 +1,39 @@
+<h1>{{.Title}}</h1>
+
+<br/>
+<table border="1">
+    <col width="10%">
+    <col width="20%">
+    <col width="10%">
+    <col width="10%">
+    <col width="10%">
+    <col width="20%">
+    <col width="10%">
+    <col width="10%">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Isin</th>
+            <th>Currency</th>
+            <th>fxRate</th>
+            <th>Symbol</th>
+            <th>reportDate</th>
+            <th>position</th>
+            <th>markPrice</th>
+        </tr>
+    </thead>
+    <tbody>
+		{{ range $key, $value := .OpenPositions }}
+		 <tr>
+            <td>{{ $key }}</td>
+            <td>{{ $value.Isin }}</td>
+            <!--td>{{ $value.Currency }}</td>
+            <td>{{ $value.fxRate }}</td-->
+            <td>{{ $value.Symbol }}</td>
+            <!--td>{{ $value.reportDate }}</td>
+            <td>{{ $value.position }}</td>
+            <td>{{ $value.markPrice }}</td-->
+        </tr>
+		{{ end }}
+    </tbody>
+</table>
