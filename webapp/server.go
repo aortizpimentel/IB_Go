@@ -67,7 +67,7 @@ func OpenPositionsHandler(w http.ResponseWriter, r *http.Request) {
 
 	//Template construction
 	p := OpenPositionsPage{Title: "Open Positions", OpenPositions: op_map}
-	t, _ := template.ParseFiles("openpositiontemplate.html")
+	t, _ := template.ParseFiles("./templates/openpositiontemplate.html")
 	t.Execute(w, p)
 }
 
