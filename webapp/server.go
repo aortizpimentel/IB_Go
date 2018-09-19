@@ -7,6 +7,8 @@ import (
 	"io/ioutil"
 	"net/http"
 	"os"
+
+	"google.golang.org/appengine"
 )
 
 type FlexStatements struct {
@@ -137,6 +139,7 @@ func OrdersHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
+	appengine.Main()
 	http.HandleFunc("/", indexHandler)
 	http.HandleFunc("/ib/open", OpenPositionsHandler)
 	http.HandleFunc("/ib/orders", OrdersHandler)
