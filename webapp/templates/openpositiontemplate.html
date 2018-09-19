@@ -3,36 +3,36 @@
 <br/>
 <table border="1">
     <col width="10%">
-    <col width="20%">
-    <col width="10%">
-    <col width="10%">
     <col width="10%">
     <col width="20%">
     <col width="10%">
     <col width="10%">
+    <col width="10%">
+    <col width="10%">
+    <col width="20%">
     <thead>
         <tr>
             <th>ID</th>
-            <th>Isin</th>
-            <th>Currency</th>
-            <th>fxRate</th>
             <th>Symbol</th>
-            <th>reportDate</th>
-            <th>position</th>
-            <th>markPrice</th>
+            <th>Description</th>
+            <th>Position</th>
+            <th>Currency</th>
+            <th>MarkPrice</th>
+            <th>FxRate</th>
+            <th>Isin</th>
         </tr>
     </thead>
     <tbody>
 		{{ range $key, $value := .OpenPositions }}
 		 <tr>
             <td>{{ $key }}</td>
-            <td>{{ $value.Isin }}</td>
-            <!--td>{{ $value.Currency }}</td>
-            <td>{{ $value.fxRate }}</td-->
             <td>{{ $value.Symbol }}</td>
-            <!--td>{{ $value.reportDate }}</td>
-            <td>{{ $value.position }}</td>
-            <td>{{ $value.markPrice }}</td-->
+            <td>{{ $value.Description }}</td>
+            <td>{{ $value.Position }}</td>
+            <td>{{ $value.Currency }}</td>
+            <td>{{ $value.MarkPrice }}</td>
+            <td>{{ $value.FxRate }}</td>
+            <td>{{ $value.Isin }}</td>
         </tr>
 		{{ end }}
     </tbody>

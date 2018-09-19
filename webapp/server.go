@@ -12,25 +12,25 @@ import (
 type FlexStatements struct {
 	FlexStatement []struct {
 		OpenPositions []struct {
-			isin string `xml:"isin,attr"`
-			//currency   string `xml:"currency,attr"`
-			//fxRate     string `xml:"fxRateToBase,attr"`
-			symbol string `xml:"symbol,attr"`
-			//reportDate string `xml:"reportDate,attr"`
-			//position   string `xml:"position,attr"`
-			//markPrice  string `xml:"markPrice,attr"`
+			Isin        string `xml:"isin,attr"`
+			Currency    string `xml:"currency,attr"`
+			FxRate      string `xml:"fxRateToBase,attr"`
+			Symbol      string `xml:"symbol,attr"`
+			Position    string `xml:"position,attr"`
+			MarkPrice   string `xml:"markPrice,attr"`
+			Description string `xml:"description,attr"`
 		} `xml:"OpenPositions>OpenPosition"`
 	} `xml:"FlexStatements>FlexStatement"`
 }
 
 type OPMap struct {
-	isin string
-	//currency   string
-	//fxRate     string
-	symbol string
-	//reportDate string
-	//position   string
-	//markPrice  string
+	Isin        string
+	Currency    string
+	FxRate      string
+	Symbol      string
+	Position    string
+	MarkPrice   string
+	Description string
 }
 
 type OpenPositionsPage struct {
@@ -59,11 +59,8 @@ func OpenPositionsHandler(w http.ResponseWriter, r *http.Request) {
 	op_map := make(map[int]OPMap)
 
 	for index, i := range fx.FlexStatement[0].OpenPositions {
-
-		fmt.Printf("\n %d: %s | %s", index, i.isin, i.symbol)
-		op_map[index] = OPMap{i.isin /*, i.currency, i.fxRate*/, i.symbol /*, i.reportDate, i.position, i.markPrice*/}
+		op_map[index] = OPMap{i.Isin, i.Currency, i.FxRate, i.Symbol, i.Position, i.MarkPrice, i.Description}
 	}
-	fmt.Printf("\n%s", op_map)
 
 	//Template construction
 	p := OpenPositionsPage{Title: "Open Positions", OpenPositions: op_map}
