@@ -139,10 +139,9 @@ func OrdersHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	appengine.Main()
 	http.HandleFunc("/", indexHandler)
 	http.HandleFunc("/ib/open", OpenPositionsHandler)
 	http.HandleFunc("/ib/orders", OrdersHandler)
 
-	http.ListenAndServe(":8080", nil)
+	appengine.Main()
 }
