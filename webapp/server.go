@@ -20,13 +20,15 @@ type FlexStatements struct {
 			Email      string `xml:"primaryEmail,attr"`
 		} `xml:"AccountInformation"`
 		OpenPositions []struct {
-			Isin        string `xml:"isin,attr"`
-			Currency    string `xml:"currency,attr"`
-			FxRate      string `xml:"fxRateToBase,attr"`
-			Symbol      string `xml:"symbol,attr"`
-			Position    string `xml:"position,attr"`
-			MarkPrice   string `xml:"markPrice,attr"`
-			Description string `xml:"description,attr"`
+			Isin            string `xml:"isin,attr"`
+			Currency        string `xml:"currency,attr"`
+			FxRate          string `xml:"fxRateToBase,attr"`
+			Symbol          string `xml:"symbol,attr"`
+			Position        string `xml:"position,attr"`
+			MarkPrice       string `xml:"markPrice,attr"`
+			Description     string `xml:"description,attr"`
+			PositionValue   string `xml:"positionValue,attr"`
+			ListingExchange string `xml:"listingExchange,attr"`
 		} `xml:"OpenPositions>OpenPosition"`
 		Order []struct {
 			IBOrderID            string `xml:"ibOrderID,attr"`
@@ -50,14 +52,16 @@ type FlexStatements struct {
 }
 
 type OPMap struct {
-	Index       int
-	Isin        string
-	Currency    string
-	FxRate      string
-	Symbol      string
-	Position    string
-	MarkPrice   string
-	Description string
+	Index           int
+	Isin            string
+	Currency        string
+	FxRate          string
+	Symbol          string
+	Position        string
+	MarkPrice       string
+	Description     string
+	PositionValue   string
+	ListingExchange string
 }
 
 type OrderMap struct {
@@ -130,7 +134,7 @@ func OpenPositionsHandler(w http.ResponseWriter, r *http.Request) {
 	op_map := make(map[int]OPMap)
 
 	for index, i := range fx.FlexStatement[0].OpenPositions {
-		op_map[index] = OPMap{index + 1, i.Isin, i.Currency, i.FxRate, i.Symbol, i.Position, i.MarkPrice, i.Description}
+		op_map[index] = OPMap{index + 1, i.Isin, i.Currency, i.FxRate, i.Symbol, i.Position, i.MarkPrice, i.Description, i.PositionValue, i.ListingExchange}
 	}
 
 	//Template construction
@@ -183,7 +187,7 @@ func D6Handler(w http.ResponseWriter, r *http.Request) {
 	op_map := make(map[int]OPMap)
 
 	for index, i := range fx.FlexStatement[0].OpenPositions {
-		op_map[index] = OPMap{index + 1, i.Isin, i.Currency, i.FxRate, i.Symbol, i.Position, i.MarkPrice, i.Description}
+		op_map[index] = OPMap{index + 1, i.Isin, i.Currency, i.FxRate, i.Symbol, i.Position, i.MarkPrice, i.Description, i.PositionValue, i.ListingExchange}
 	}
 	fmt.Printf("\n%s", fx)
 
