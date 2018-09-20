@@ -8,7 +8,7 @@ import (
 	"net/http"
 	"os"
 
-	"google.golang.org/appengine"
+	"google.golang.org/appengine" //Needed for Google Cloud Platform
 )
 
 type FlexStatements struct {
@@ -82,6 +82,25 @@ type OrdersPage struct {
 	Orders map[int]OrderMap
 }
 
+type D6Map struct {
+	Deposit          bool
+	Year             string
+	D6ReplacementNum string
+	ClientName       string
+	NIF              string
+	WayType          string
+	WayName          string
+	WayNum           string
+	PostalCode       string
+	City             string
+	State            string
+}
+
+type D6Page struct {
+	Title string
+	D6    D6Map
+}
+
 func indexHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "<h1>IB GO</h1>")
 }
@@ -138,10 +157,25 @@ func OrdersHandler(w http.ResponseWriter, r *http.Request) {
 	t.Execute(w, p)
 }
 
+func D6Handler(w http.ResponseWriter, r *http.Request) {
+	/**** TESTING ****/
+	d6test := D6Map{true, "2018", "", "Adrián Ortiz Pimentel", "78982122F", "Urbanización", "El Rocío 1", "5", "29670", "San Pedro de Alcántara", "Málaga"}
+	//d6_map := make(map[int]d6test)
+
+	//Template construction
+	p := D6Page{Title: "Modelo D-6", D6: d6test}
+	t, _ := template.ParseFiles("./templates/d6template.html")
+	t.Execute(w, p)
+}
+
 func main() {
 	http.HandleFunc("/", indexHandler)
 	http.HandleFunc("/ib/open", OpenPositionsHandler)
 	http.HandleFunc("/ib/orders", OrdersHandler)
+	http.HandleFunc("/ib/d6", D6Handler)
 
+	http.ListenAndServe(":8000", nil)
+
+	//Needed for Google Cloud Platform
 	appengine.Main()
 }
