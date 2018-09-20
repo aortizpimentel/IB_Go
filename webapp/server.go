@@ -7,12 +7,18 @@ import (
 	"io/ioutil"
 	"net/http"
 	"os"
-
-	"google.golang.org/appengine" //Needed for Google Cloud Platform
+	//"google.golang.org/appengine" //Needed for Google Cloud Platform
 )
 
 type FlexStatements struct {
 	FlexStatement []struct {
+		AccountInformation []struct {
+			Name       string `xml:"name,attr"`
+			Street     string `xml:"street,attr"`
+			Street2    string `xml:"street2,attr"`
+			PostalCode string `xml:"postalCode,attr"`
+			Email      string `xml:"primaryEmail,attr"`
+		} `xml:"AccountInformation"`
 		OpenPositions []struct {
 			Isin        string `xml:"isin,attr"`
 			Currency    string `xml:"currency,attr"`
@@ -44,6 +50,7 @@ type FlexStatements struct {
 }
 
 type OPMap struct {
+	Index       int
 	Isin        string
 	Currency    string
 	FxRate      string
@@ -97,8 +104,9 @@ type D6Map struct {
 }
 
 type D6Page struct {
-	Title string
-	D6    D6Map
+	Title         string
+	D6            D6Map
+	OpenPositions map[int]OPMap
 }
 
 func indexHandler(w http.ResponseWriter, r *http.Request) {
@@ -122,7 +130,7 @@ func OpenPositionsHandler(w http.ResponseWriter, r *http.Request) {
 	op_map := make(map[int]OPMap)
 
 	for index, i := range fx.FlexStatement[0].OpenPositions {
-		op_map[index] = OPMap{i.Isin, i.Currency, i.FxRate, i.Symbol, i.Position, i.MarkPrice, i.Description}
+		op_map[index] = OPMap{index + 1, i.Isin, i.Currency, i.FxRate, i.Symbol, i.Position, i.MarkPrice, i.Description}
 	}
 
 	//Template construction
@@ -158,12 +166,32 @@ func OrdersHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func D6Handler(w http.ResponseWriter, r *http.Request) {
+
+	var fx FlexStatements
+
+	// Open xmlFile
+	xmlFile, err := os.Open("./xml/All.xml")
+	if err != nil {
+		fmt.Println("Error:")
+		fmt.Println(err)
+	}
+
+	defer xmlFile.Close()
+	byteValue, _ := ioutil.ReadAll(xmlFile)
+
+	xml.Unmarshal(byteValue, &fx)
+	op_map := make(map[int]OPMap)
+
+	for index, i := range fx.FlexStatement[0].OpenPositions {
+		op_map[index] = OPMap{index + 1, i.Isin, i.Currency, i.FxRate, i.Symbol, i.Position, i.MarkPrice, i.Description}
+	}
+	fmt.Printf("\n%s", fx)
+
 	/**** TESTING ****/
-	d6test := D6Map{true, "2018", "", "Adrián Ortiz Pimentel", "78982122F", "Urbanización", "El Rocío 1", "5", "29670", "San Pedro de Alcántara", "Málaga"}
-	//d6_map := make(map[int]d6test)
+	client_info := D6Map{true, "2018", "", "Adrián Ortiz Pimentel", "78982122F", "Urbanización", "El Rocío 1", "5", "29670", "San Pedro de Alcántara", "Málaga"}
 
 	//Template construction
-	p := D6Page{Title: "Modelo D-6", D6: d6test}
+	p := D6Page{Title: "Modelo D-6", D6: client_info, OpenPositions: op_map}
 	t, _ := template.ParseFiles("./templates/d6template.html")
 	t.Execute(w, p)
 }
@@ -177,5 +205,5 @@ func main() {
 	http.ListenAndServe(":8000", nil)
 
 	//Needed for Google Cloud Platform
-	appengine.Main()
+	//appengine.Main()
 }

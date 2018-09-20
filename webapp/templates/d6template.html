@@ -59,11 +59,11 @@
     <!-- **            CABECERA             ** -->
     <!-- ************************************* -->
     <div class="row">
-        <div class="col-sm-1"></div>
-        <div class="col-sm-11">
+        <div class="col-md-1"></div>
+        <div class="col-md-11">
             <div class="row">
-                <div class="col-sm-2"></div>
-                <div class="col-sm-6">    	                           
+                <div class="col-md-2"></div>
+                <div class="col-md-6">    	                           
                     <div class="panel panel-default">
                         <div class="panel-body">
                             <center>
@@ -74,14 +74,14 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-md-3">
                     <p>Modelo</p>
                     <p><h1><b>D-6</b></h1></p>
                     <p>Hoja nº</p>
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-11">  	                           
+                <div class="col-md-11">  	                           
                     <div class="panel panel-default">
                         <div class="panel-body">
                             <center>
@@ -93,7 +93,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-11">	                           
+                <div class="col-md-11">	                           
                     <div class="panel panel-default">
                         <div class="panel-body">
                             <center>
@@ -104,7 +104,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-7"> 	                           
+                <div class="col-md-7"> 	                           
                     <div class="panel panel-default">
                         <div class="panel-body">
                             <center>
@@ -113,7 +113,7 @@
                         </div>
                     </div> 
                 </div>
-                <div class="col-sm-4">	        
+                <div class="col-md-4">	        
                     <div class="panel panel-default">
                         <div class="panel-body">
                             <center>
@@ -129,7 +129,7 @@
     <!-- **            BLOQUE I             ** -->
     <!-- ************************************* -->
     <div class="row">
-        <div class="col-sm-1">
+        <div class="col-md-1">
             <div class="panel panel-default">
                 <div class="panel-body">
                     <p><center><b>I</b></center></p>
@@ -140,47 +140,47 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-11">
+        <div class="col-md-11">
             <div class="row">
-                <div class="col-sm-11">
+                <div class="col-md-11">
                     <div class="panel panel-default">
                         <div class="panel-body">
                             <div class="row">
-                                <div class="col-sm-9">
+                                <div class="col-md-9">
                                     <p><b>1. Titular de la inversión</b></p>
                                     <p>Apellidos y nombre o razón social</p>
                                     <p><input type="text" id="txName" name="txName"  minlength="0" size="90" maxlength="90" placeholder="{{.D6.ClientName}}"/></p>
                                 </div>
-                                <div class="col-sm-2">
+                                <div class="col-md-2">
                                     <p>&nbsp;</p>
                                     <p>NIF o NIE</p>
                                     <p><input type="text" id="txNif" name="txNif"  minlength="0" size="15" maxlength="11" placeholder="{{.D6.NIF}}"/></p>
                                 </div>
                             </div>  
                             <div class="row">
-                                <div class="col-sm-2">
+                                <div class="col-md-2">
                                     <p>Calle/Plaza/Avda.</p>
                                     <p><input type="text" id="txTipoVia" name="txTipoVia"  minlength="0" size="15" maxlength="15" placeholder="{{.D6.WayType}}"/></p>
                                 </div>
-                                <div class="col-sm-8">
+                                <div class="col-md-8">
                                     <p>Nombre de la vía pública</p>
                                     <p><input type="text" id="txVia" name="txVia"  minlength="0" size="80" maxlength="80" placeholder="{{.D6.WayName}}"/></p>
                                 </div>
-                                <div class="col-sm-1">
+                                <div class="col-md-1">
                                         <p>Número</p>
                                         <p><input type="text" id="txNif" name="txNif"  minlength="0" size="10" maxlength="10" placeholder="{{.D6.WayNum}}"/></p>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-sm-2">
+                                <div class="col-md-2">
                                     <p>Código Postal</p>
                                     <p><input type="text" id="txName" name="txName"  minlength="0" size="20" maxlength="20" placeholder="{{.D6.PostalCode}}"/></p>
                                 </div>
-                                <div class="col-sm-6">
+                                <div class="col-md-6">
                                     <p>Municipio</p>
                                     <p><input type="text" id="txVia" name="txVia"  minlength="0" size="72" maxlength="72" placeholder="{{.D6.City}}"/></p>
                                 </div>
-                                <div class="col-sm-3">
+                                <div class="col-md-3">
                                     <p>Provincia</p>
                                     <p><input type="text" id="txNif" name="txNif"  minlength="0" size="36" maxlength="36" placeholder="{{.D6.State}}"/></p>
                                 </div>
@@ -195,7 +195,7 @@
     <!-- **            BLOQUE II            ** -->
     <!-- ************************************* -->
     <div class="row">
-        <div class="col-sm-1">
+        <div class="col-md-1">
             <div class="panel panel-default">
                 <div class="panel-body">
                     <p><center><b>II</b></center></p>
@@ -207,206 +207,82 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-11">
+        <div class="col-md-11">
+            {{ range $key, $value := .OpenPositions }}
+            {{ if lt $key 3 }}
             <div class="row">
-                <div class="col-sm-11">
-                    <p><b>1</b></p>
+                <div class="col-md-11">
+                    <p><b>{{ $value.Index }}</b></p>
                     <div class="panel panel-default">
                         <div class="panel-body">
                             <div class="row">
-                                <div class="col-sm-3">
+                                <div class="col-md-3">
                                     <p>2.Clase de operación&nbsp;
                                     <input type="text" id="txOperType" name="txOperType"  minlength="0" size="6" maxlength="6" placeholder=""/></p>
                                 </div>
-                                <div class="col-sm-3">
+                                <div class="col-md-3">
                                     <p>3.Fecha de la operación&nbsp;
                                     <input type="text" id="txOperType" name="txOperType"  minlength="0" size="6" maxlength="6" placeholder=""/></p>
                                 </div>
-                                <div class="col-sm-5" align="right">
+                                <div class="col-md-5" align="right">
                                     <p>4.¿Participación superior o igual al 10% del capital?&nbsp;&nbsp;&nbsp;Si&nbsp;<input type="checkbox" />&nbsp;No&nbsp;<input type="checkbox" /></p>
                                     <p>En caso afirmativo indique el porcentaje&nbsp;&nbsp;<input type="text" id="txPerc" name="txPerc"  minlength="0" size="5" maxlength="5" placeholder=""/></p>
                                     <br/>
                                 </div>
                             </div>  
                             <div class="row">
-                                <div class="col-sm-2">
+                                <div class="col-md-2">
                                     <p>5.Código ISIN</p>
-                                    <p><input type="text" id="txB2_1_5" name="txB2_1_5"  minlength="0" size="20" maxlength="20" placeholder=""/></p>
+                                    <p><input type="text" id="txB2_1_5" name="txB2_1_5"  minlength="0" size="20" maxlength="20" placeholder="{{ $value.Isin }}"/></p>
                                 </div>
-                                <div class="col-sm-7">
+                                <div class="col-md-7">
                                     <p>6.Descripción del valor</p>
-                                    <p><input type="text" id="txB2_1_6" name="txB2_1_6"  minlength="0" size="86" maxlength="86" placeholder=""/></p>
+                                    <p><input type="text" id="txB2_1_6" name="txB2_1_6"  minlength="0" size="86" maxlength="86" placeholder="{{ $value.Description }}"/></p>
                                 </div>
-                                <div class="col-sm-1">
+                                <div class="col-md-1">
                                     <p>7.Emisor</p>
-                                    <p><input type="text" id="txB2_1_7" name="txB2_1_7"  minlength="0" size="7" maxlength="7" placeholder=""/></p>
+                                    <p><input type="text" id="txB2_1_7" name="txB2_1_7"  minlength="0" size="7" maxlength="7" placeholder="400"/></p>
                                 </div>
-                                <div class="col-sm-1">
+                                <div class="col-md-1">
                                     <p>8.Valor</p>
-                                    <p><input type="text" id="txB2_1_8" name="txB2_1_8"  minlength="0" size="6" maxlength="6" placeholder=""/></p>
+                                    <p><input type="text" id="txB2_1_8" name="txB2_1_8"  minlength="0" size="6" maxlength="6" placeholder="01"/></p>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-sm-1">
+                                <div class="col-md-1">
                                     <p>9.País</p>
-                                    <p><input type="text" id="txB2_2_5" name="txB2_2_5"  minlength="0" size="7" maxlength="7" placeholder=""/></p>
+                                    <p><input type="text" id="txB2_2_5" name="txB2_2_5"  minlength="0" size="7" maxlength="7" placeholder=""/>{{ $value.ListingExchange }}</p>
                                 </div>
-                                <div class="col-sm-1">
+                                <div class="col-md-1">
                                     <p>10.Moneda</p>
-                                    <p><input type="text" id="txB2_2_6" name="txB2_2_6"  minlength="0" size="7" maxlength="7" placeholder=""/></p>
+                                    <p><input type="text" id="txB2_2_6" name="txB2_2_6"  minlength="0" size="7" maxlength="7" placeholder=""/>{{ $value.Currency }}</p>
                                 </div>
-                                <div class="col-sm-2">
+                                <div class="col-md-2">
                                     <p>11.Número de títulos</p>
-                                    <p><input type="text" id="txB2_2_5" name="txB2_2_5"  minlength="0" size="20" maxlength="20" placeholder=""/></p>
+                                    <p><input type="text" id="txB2_2_5" name="txB2_2_5"  minlength="0" size="20" maxlength="20" placeholder=""/>{{ $value.Position }}</p>
                                 </div>
-                                <div class="col-sm-4">
+                                <div class="col-md-4">
                                     <p>12.Nominal en la moneda de denominación</p>
                                     <p><input type="text" id="txB2_2_7" name="txB2_2_7"  minlength="0" size="46" maxlength="46" placeholder=""/></p>
                                 </div>
-                                <div class="col-sm-2">
+                                <div class="col-md-2">
                                     <p>13.Importe efectivo</p>
-                                    <p><input type="text" id="txB2_2_8" name="txB2_2_8"  minlength="0" size="32" maxlength="32" placeholder=""/></p>
+                                    <p><input type="text" id="txB2_2_8" name="txB2_2_8"  minlength="0" size="32" maxlength="32" placeholder=""/>{{ $value.PositionValue }}</p>
                                 </div>
                             </div>
                         </div>  
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-sm-11">
-                    <p><b>2</b></p>
-                    <div class="panel panel-default">
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <p>2.Clase de operación&nbsp;
-                                    <input type="text" id="txOperType" name="txOperType"  minlength="0" size="6" maxlength="6" placeholder=""/></p>
-                                </div>
-                                <div class="col-sm-3">
-                                    <p>3.Fecha de la operación&nbsp;
-                                    <input type="text" id="txOperType" name="txOperType"  minlength="0" size="6" maxlength="6" placeholder=""/></p>
-                                </div>
-                                <div class="col-sm-5" align="right">
-                                    <p>4.¿Participación superior o igual al 10% del capital?&nbsp;&nbsp;&nbsp;Si&nbsp;<input type="checkbox" />&nbsp;No&nbsp;<input type="checkbox" /></p>
-                                    <p>En caso afirmativo indique el porcentaje&nbsp;&nbsp;<input type="text" id="txPerc" name="txPerc"  minlength="0" size="5" maxlength="5" placeholder=""/></p>
-                                    <br/>
-                                </div>
-                            </div>  
-                            <div class="row">
-                                <div class="col-sm-2">
-                                    <p>5.Código ISIN</p>
-                                    <p><input type="text" id="txB2_1_5" name="txB2_1_5"  minlength="0" size="20" maxlength="20" placeholder=""/></p>
-                                </div>
-                                <div class="col-sm-7">
-                                    <p>6.Descripción del valor</p>
-                                    <p><input type="text" id="txB2_1_6" name="txB2_1_6"  minlength="0" size="86" maxlength="86" placeholder=""/></p>
-                                </div>
-                                <div class="col-sm-1">
-                                    <p>7.Emisor</p>
-                                    <p><input type="text" id="txB2_1_7" name="txB2_1_7"  minlength="0" size="7" maxlength="7" placeholder=""/></p>
-                                </div>
-                                <div class="col-sm-1">
-                                    <p>8.Valor</p>
-                                    <p><input type="text" id="txB2_1_8" name="txB2_1_8"  minlength="0" size="6" maxlength="6" placeholder=""/></p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-1">
-                                    <p>9.País</p>
-                                    <p><input type="text" id="txB2_2_5" name="txB2_2_5"  minlength="0" size="7" maxlength="7" placeholder=""/></p>
-                                </div>
-                                <div class="col-sm-1">
-                                    <p>10.Moneda</p>
-                                    <p><input type="text" id="txB2_2_6" name="txB2_2_6"  minlength="0" size="7" maxlength="7" placeholder=""/></p>
-                                </div>
-                                <div class="col-sm-2">
-                                    <p>11.Número de títulos</p>
-                                    <p><input type="text" id="txB2_2_5" name="txB2_2_5"  minlength="0" size="20" maxlength="20" placeholder=""/></p>
-                                </div>
-                                <div class="col-sm-4">
-                                    <p>12.Nominal en la moneda de denominación</p>
-                                    <p><input type="text" id="txB2_2_7" name="txB2_2_7"  minlength="0" size="46" maxlength="46" placeholder=""/></p>
-                                </div>
-                                <div class="col-sm-2">
-                                    <p>13.Importe efectivo</p>
-                                    <p><input type="text" id="txB2_2_8" name="txB2_2_8"  minlength="0" size="32" maxlength="32" placeholder=""/></p>
-                                </div>
-                            </div>
-                        </div>  
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-11">
-                    <p><b>3</b></p>
-                    <div class="panel panel-default">
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <p>2.Clase de operación&nbsp;
-                                    <input type="text" id="txOperType" name="txOperType"  minlength="0" size="6" maxlength="6" placeholder=""/></p>
-                                </div>
-                                <div class="col-sm-3">
-                                    <p>3.Fecha de la operación&nbsp;
-                                    <input type="text" id="txOperType" name="txOperType"  minlength="0" size="6" maxlength="6" placeholder=""/></p>
-                                </div>
-                                <div class="col-sm-5" align="right">
-                                    <p>4.¿Participación superior o igual al 10% del capital?&nbsp;&nbsp;&nbsp;Si&nbsp;<input type="checkbox" />&nbsp;No&nbsp;<input type="checkbox" /></p>
-                                    <p>En caso afirmativo indique el porcentaje&nbsp;&nbsp;<input type="text" id="txPerc" name="txPerc"  minlength="0" size="5" maxlength="5" placeholder=""/></p>
-                                    <br/>
-                                </div>
-                            </div>  
-                            <div class="row">
-                                <div class="col-sm-2">
-                                    <p>5.Código ISIN</p>
-                                    <p><input type="text" id="txB2_1_5" name="txB2_1_5"  minlength="0" size="20" maxlength="20" placeholder=""/></p>
-                                </div>
-                                <div class="col-sm-7">
-                                    <p>6.Descripción del valor</p>
-                                    <p><input type="text" id="txB2_1_6" name="txB2_1_6"  minlength="0" size="86" maxlength="86" placeholder=""/></p>
-                                </div>
-                                <div class="col-sm-1">
-                                    <p>7.Emisor</p>
-                                    <p><input type="text" id="txB2_1_7" name="txB2_1_7"  minlength="0" size="7" maxlength="7" placeholder=""/></p>
-                                </div>
-                                <div class="col-sm-1">
-                                    <p>8.Valor</p>
-                                    <p><input type="text" id="txB2_1_8" name="txB2_1_8"  minlength="0" size="6" maxlength="6" placeholder=""/></p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-1">
-                                    <p>9.País</p>
-                                    <p><input type="text" id="txB2_2_5" name="txB2_2_5"  minlength="0" size="7" maxlength="7" placeholder=""/></p>
-                                </div>
-                                <div class="col-sm-1">
-                                    <p>10.Moneda</p>
-                                    <p><input type="text" id="txB2_2_6" name="txB2_2_6"  minlength="0" size="7" maxlength="7" placeholder=""/></p>
-                                </div>
-                                <div class="col-sm-2">
-                                    <p>11.Número de títulos</p>
-                                    <p><input type="text" id="txB2_2_5" name="txB2_2_5"  minlength="0" size="20" maxlength="20" placeholder=""/></p>
-                                </div>
-                                <div class="col-sm-4">
-                                    <p>12.Nominal en la moneda de denominación</p>
-                                    <p><input type="text" id="txB2_2_7" name="txB2_2_7"  minlength="0" size="46" maxlength="46" placeholder=""/></p>
-                                </div>
-                                <div class="col-sm-2">
-                                    <p>13.Importe efectivo</p>
-                                    <p><input type="text" id="txB2_2_8" name="txB2_2_8"  minlength="0" size="32" maxlength="32" placeholder=""/></p>
-                                </div>
-                            </div>
-                        </div>  
-                    </div>
-                </div>
-            </div>
+            {{end}}
+            {{ end }}
         </div>
     </div>
     <!-- ************************************* -->
     <!-- **           BLOQUE III            ** -->
     <!-- ************************************* -->
     <div class="row">
-        <div class="col-sm-1">
+        <div class="col-md-1">
             <div class="panel panel-default">
                 <div class="panel-body">
                     <p><center><b>III</b></center></p>
@@ -417,54 +293,54 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-11">
+        <div class="col-md-11">
             <div class="row">
-                <div class="col-sm-11">
+                <div class="col-md-11">
                     <div class="panel panel-default">
                         <div class="panel-body">
                             <div class="row">
-                                <div class="col-sm-7">
+                                <div class="col-md-7">
                                     <p>14.Declaración: Don/Dª</p>
                                 </div>
-                                <div class="col-sm-4">
+                                <div class="col-md-4">
                                     <p>con domicilio en&nbsp;</p>
                                 </div>
                             </div>  
                             <div class="row">
-                                <div class="col-sm-5">
+                                <div class="col-md-5">
                                     <p>calle</p>
                                 </div>
-                                <div class="col-sm-2">
+                                <div class="col-md-2">
                                         <p>nº&nbsp;</p>
                                     </div>
-                                <div class="col-sm-4">
+                                <div class="col-md-4">
                                     <p>con DNI nº&nbsp;</p>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-sm-11">
+                                <div class="col-md-11">
                                     <p>En nombre propio o en representación de</p>
                                 </div>
                             </div> 
                             <div class="row">
-                                <div class="col-sm-11">
+                                <div class="col-md-11">
                                     <p>Suscribo los datos de esta declaración</p>
                                 </div>
                             </div> 
                             <div class="row">
-                                <div class="col-sm-3">
+                                <div class="col-md-3">
                                     
                                 </div>
-                                <div class="col-sm-1">
+                                <div class="col-md-1">
                                     <p>,</p>
                                 </div>
-                                <div class="col-sm-2">
+                                <div class="col-md-2">
                                     <p>de</p>
                                 </div>
-                                <div class="col-sm-2">
+                                <div class="col-md-2">
                                     <p>de</p>
                                 </div>
-                                <div class="col-sm-3">
+                                <div class="col-md-3">
                                     <p>(firma)</p>
                                 </div>
                             </div> 
@@ -473,26 +349,26 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-11">
+                <div class="col-md-11">
                     <div class="panel panel-default">
                         <div class="panel-body">
                             <div class="row">
-                                <div class="col-sm-7">
+                                <div class="col-md-7">
                                     <p>15. Datos de contacto para notificaciones:</p>
                                     <p>Nombre/Razón Social:</p>
                                 </div>
-                                <div class="col-sm-4">
+                                <div class="col-md-4">
                                     <p>Teléfono</p>
                                     <p><input type="text" id="txB3_2_1" name="txB3_2_1"  minlength="0" size="32" maxlength="32" placeholder=""/></p>
                                 </div>
                             </div>  
                             <div class="row">
-                                <div class="col-sm-7">
+                                <div class="col-md-7">
                                     <p>Dirección Postal:</p>
                                     <p>C.P. y Población:</p>
                                     <p>Provincia:</p>
                                 </div>
-                                <div class="col-sm-4">
+                                <div class="col-md-4">
                                     <p>Correo electrónico</p>
                                     <p><input type="text" id="txB3_2_1" name="txB3_2_1"  minlength="0" size="50" maxlength="50" placeholder=""/></p>
                                 </div>
@@ -504,6 +380,6 @@
         </div>
     </div>
     <div class="row">
-            <div class="col-sm-11" align="right"><p><b>BORRADOR NO VALIDO PARA SU PRESENTACION</b></p></div>
+            <div class="col-md-11" align="right"><p><b>BORRADOR NO VALIDO PARA SU PRESENTACION</b></p></div>
     </div>
 </div>
